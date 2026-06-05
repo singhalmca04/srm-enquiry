@@ -52,7 +52,7 @@ function Header() {
         if (!formData.course) {
             newErrors.course = "Please select a course";
         }
-        if (captchaInput.toUpperCase().trim() !==captchaText) {
+        if (captchaInput.toUpperCase().trim() !== captchaText) {
             newErrors.captcha = "Incorrect CAPTCHA";
         }
         setErrors(newErrors);
@@ -103,7 +103,7 @@ function Header() {
                     alignItems: 'center',
                     padding: '10px 20px',
                     boxSizing: 'border-box',
-                    borderBottom: '2px solid #071264',
+                    border: '2px solid #071264',
                     marginBottom: '20px',
                     background: '#fff'
                 }}
@@ -126,6 +126,13 @@ function Header() {
                 />
             </div>
             <div className="page-wrapper">
+                <div className="left-section">
+                    <img
+                        src="/srm-admission.jpeg"
+                        alt="SRM Campus"
+                        className="campus-image"
+                    />
+                </div>
                 <div className="enquiry-box">
                     <h2>Enquire Now</h2>
                     <form onSubmit={handleSubmit}>
@@ -235,7 +242,7 @@ function Header() {
                         <input
                             type="text"
                             placeholder="Enter CAPTCHA *"
-                            value={ captchaInput }
+                            value={captchaInput}
                             onChange={(e) =>
                                 setCaptchaInput(e.target.value)
                             }

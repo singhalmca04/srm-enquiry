@@ -13,20 +13,59 @@ body {
     margin: 0;
 }
 .page-wrapper {
-    min-height: 100vh;
+    // min-height: 100vh;
+    // display: flex;
+    // justify-content: right;
+    // margin-right: 50px;
+    // align-items: center;
+    // // background:
+    // //     linear-gradient(
+    // //         rgba(0,0,0,0.45),
+    // //         rgba(0,0,0,0.45)
+    // //     ),
+    // //     url('./assets/srm_image.jpg');
+    // background-size: cover;
+    // background-position: center;
+    // background-repeat: no-repeat;
+    min-height: calc(100vh - 180px);
     display: flex;
-    justify-content: right;
-    margin-right: 50px;
+    justify-content: center;
     align-items: center;
-    // background:
-    //     linear-gradient(
-    //         rgba(0,0,0,0.45),
-    //         rgba(0,0,0,0.45)
-    //     ),
-    //     url('./assets/srm_image.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    gap: 50px;
+    padding: 30px;
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.campus-image {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,0.25);
+    object-fit: cover;
+}
+@media (max-width: 992px) {
+    .page-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .left-section {
+        width: 100%;
+    }
+    .campus-image {
+        max-width: 100%;
+    }
+    .enquiry-box {
+        width: 100%;
+        max-width: 450px;
+    }
 }
 
 .enquiry-box {
