@@ -1,22 +1,41 @@
 body {
     font-family: Arial, sans-serif;
-    // background:
-    //     linear-gradient(
-    //         rgba(0,0,0,0.45),
-    //         rgba(0,0,0,0.45)
-    //     ),
-    //     url('/srm_image.jpg');
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.45),
+            rgba(0,0,0,0.45)
+        ),
+        url('./assets/srm_image.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
     margin: 0;
 }
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background:
+    //     linear-gradient(
+    //         rgba(0,0,0,0.45),
+    //         rgba(0,0,0,0.45)
+    //     ),
+    //     url('./assets/srm_image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .enquiry-box {
-    width: 320px;
-    background: #fff;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 400px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,0.25);
 }
 
 .enquiry-box h2 {
@@ -41,10 +60,41 @@ body {
     border: none;
     cursor: pointer;
 }
+.captcha-value {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.captcha-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 3px;
+}
+
+.captcha-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    user-select: none;
+}
+
+.refresh-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
 .error {
     color: #dc3545;
     font-size: 12px;
     margin-top: 4px;
+    margin-bottom: 6px;
 }
 
 .success {
@@ -53,3 +103,24 @@ body {
     margin-top: 10px;
     font-weight: bold;
 }
+
+.captcha-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.refresh-icon-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    color: #2d6b2f;
+    padding: 4px;
+}
+
+// .refresh-icon-btn:hover {
+//     transform: rotate(180deg);
+//     transition: transform 0.3s ease;
+// }
