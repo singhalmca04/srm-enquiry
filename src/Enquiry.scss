@@ -5,8 +5,8 @@ body {
             rgba(0,0,0,0.45),
             rgba(0,0,0,0.45)
         ),
-        url('./assets/srm_image.jpeg');
-    background-size: cover;
+        url('./assets/srm-admission.jpeg');
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -15,7 +15,8 @@ body {
 .page-wrapper {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: right;
+    margin-right: 50px;
     align-items: center;
     // background:
     //     linear-gradient(
@@ -33,6 +34,8 @@ body {
     background: white;
     padding: 25px;
     border-radius: 10px;
+    margin-top: 10px;
+    border: 5px solid #071264;
     box-shadow:
         0 10px 30px
         rgba(0,0,0,0.25);
@@ -55,7 +58,7 @@ body {
 .enquiry-box button {
     width: 100%;
     padding: 12px;
-    background: #2d6b2f;
+    background: #071264;
     color: white;
     border: none;
     cursor: pointer;

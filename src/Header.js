@@ -99,7 +99,7 @@ function Header() {
 
     return (
         <>
-            <div
+            {/* <div
                 style={{
                     width: '100%',
                     display: 'flex',
@@ -107,9 +107,9 @@ function Header() {
                     alignItems: 'center',
                     padding: '10px 20px',
                     boxSizing: 'border-box',
-                    borderBottom: '2px solid #e0aa3d',
+                    borderBottom: '2px solid #071264',
                     marginBottom: '20px',
-                    backgroundColor: '#a1b3ed'
+                    background: '#fff'
                 }}
             >
                 <img
@@ -128,7 +128,7 @@ function Header() {
                         objectFit: 'contain'
                     }}
                 />
-            </div>
+            </div> */}
             <div className="page-wrapper">
                 <div className="enquiry-box">
                     <h2>Enquire Now</h2>
@@ -203,7 +203,7 @@ function Header() {
                         <textarea
                             name="message"
                             placeholder="Enter Message"
-                            rows="4"
+                            rows="3"
                             value={formData.message}
                             onChange={handleChange}
                         />
