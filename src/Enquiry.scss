@@ -102,10 +102,32 @@ body {
     border: none;
     cursor: pointer;
 }
-.captcha-value {
+.captcha-container {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.captcha-canvas {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f5f5f5;
+}
+
+.refresh-icon-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 22px;
+    color: #2d6b2f;
+}
+
+.refresh-icon-btn:hover {
+
+    transform: rotate(180deg);
+
+    transition: .3s;
 }
 .captcha-box {
     display: flex;
@@ -151,13 +173,4 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-}
-
-.refresh-icon-btn {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 20px;
-    color: #2d6b2f;
-    padding: 4px;
 }

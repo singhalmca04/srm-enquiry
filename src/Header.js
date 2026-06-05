@@ -374,7 +374,6 @@ function Header() {
                             onChange={handleChange}
                         />
                         <div className="captcha-container">
-
                         <canvas
                             ref={canvasRef}
                             width="180"
