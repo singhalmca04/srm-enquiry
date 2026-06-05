@@ -262,18 +262,12 @@ function Header() {
                 <img
                     src="/left-logo.png"
                     alt="Left Logo"
-                    style={{
-                        height: '80px',
-                        objectFit: 'contain'
-                    }}
+                    className="left-logo"
                 />
                 <img
                     src="/srm-logo.png"
                     alt="Right Logo"
-                    style={{
-                        height: '70px',
-                        objectFit: 'contain'
-                    }}
+                    className="right-logo"
                 />
             </div>
             <div className="page-wrapper">
@@ -437,14 +431,6 @@ function Header() {
                     <h4>Contact Us</h4>
 
                     <p>
-                        SRM Institute of Science and Technology
-                    </p>
-
-                    <p>
-                        Delhi-NCR Campus, Ghaziabad
-                    </p>
-
-                    <p>
                         📞 1800 889 3496
                     </p>
 
@@ -462,10 +448,12 @@ function Header() {
                         className="footer-logo"
                     /> */}
 
-                    <p>
+                    <p style={{ fontSize: '14px' }}>
                         © {new Date().getFullYear()}
                         <br />
                         SRM Institute of Science and Technology
+                        <br />
+                        Delhi-NCR Campus, Ghaziabad
                         <br />
                         All Rights Reserved
                     </p>
