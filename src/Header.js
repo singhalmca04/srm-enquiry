@@ -99,7 +99,7 @@ function Header() {
 
     return (
         <>
-            {/* <div
+            <div
                 style={{
                     width: '100%',
                     display: 'flex',
@@ -128,7 +128,7 @@ function Header() {
                         objectFit: 'contain'
                     }}
                 />
-            </div> */}
+            </div>
             <div className="page-wrapper">
                 <div className="enquiry-box">
                     <h2>Enquire Now</h2>
@@ -281,10 +281,10 @@ function Header() {
                     fontWeight: 'bold',
                     paddingBottom: '1px',
                     fontSize: '14px',
-                    backgroundColor: '#a1b3ed',
+                    backgroundColor: '#071264',
                 }}
             >
-                <p> SRM Institute of Science and Technology, Delhi-NCR Campus <br />
+                <p> SRM Institute of Science and Technology, Delhi-NCR Campus, Ghaziabad <br />
                     <br />
                     © {new Date().getFullYear()} SRMIST. All Rights Reserved. </p>
             </footer>
