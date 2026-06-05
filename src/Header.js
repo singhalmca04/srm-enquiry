@@ -218,14 +218,17 @@ function Header() {
         if (captchaInput.toUpperCase().trim() !== captchaText) {
             newErrors.captcha = "Incorrect CAPTCHA";
         }
+        console.log(newErrors, 'errors');
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = async (e) => {
+        console.log(1, 'submit');
         e.preventDefault();
         setSuccessMessage("");
         if (!validateForm()) {
+            console.log(errors, 'errors');
             return;
         }
         try {
@@ -305,7 +308,6 @@ function Header() {
                             placeholder="Name*"
                             value={formData.name}
                             onChange={handleChange}
-                            required
                         />
                         {errors.name && (
                             <div className="error">{errors.name}</div>
@@ -316,7 +318,6 @@ function Header() {
                             placeholder="Email*"
                             value={formData.email}
                             onChange={handleChange}
-                            required
                         />
                         {errors.email && (
                             <div className="error">{errors.email}</div>
@@ -327,7 +328,6 @@ function Header() {
                             placeholder="Mobile*"
                             value={formData.mobile}
                             onChange={handleChange}
-                            required
                         />
                         {errors.mobile && (
                             <div className="error">{errors.mobile}</div>
@@ -336,9 +336,8 @@ function Header() {
                             name="course"
                             value={formData.course}
                             onChange={handleChange}
-                            required
                         >
-                            <option value="0">Course Interested in</option>
+                            <option value="">Course Interested in</option>
                             <option value="31">B.Sc. In Hotel and Hospitality Administration</option>
                             <option value="41">B.Sc.(Computer Science)</option>
                             <option value="39">B.Tech  Electronics &amp; Communication Engineering with Specialization  in Data Science</option>
