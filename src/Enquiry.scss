@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    // background:
+    //     linear-gradient(
+    //         rgba(0,0,0,0.45),
+    //         rgba(0,0,0,0.45)
+    //     ),
+    //     url('/srm_image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+}
+.enquiry-box {
+    width: 320px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.enquiry-box h2 {
+    margin-bottom: 15px;
+}
+
+.enquiry-box input,
+.enquiry-box select,
+.enquiry-box textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.enquiry-box button {
+    width: 100%;
+    padding: 12px;
+    background: #2d6b2f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.error {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.success {
+    color: green;
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: bold;
+}
