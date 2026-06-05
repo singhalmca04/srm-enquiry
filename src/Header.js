@@ -1,4 +1,4 @@
-import { useState,  useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import './Enquiry.scss';
 // import ReCAPTCHA from "react-google-recaptcha";
 import { FaSyncAlt } from "react-icons/fa";
@@ -218,17 +218,14 @@ function Header() {
         if (captchaInput.toUpperCase().trim() !== captchaText) {
             newErrors.captcha = "Incorrect CAPTCHA";
         }
-        console.log(newErrors, 'errors');
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = async (e) => {
-        console.log(1, 'submit');
         e.preventDefault();
         setSuccessMessage("");
         if (!validateForm()) {
-            console.log(errors, 'errors');
             return;
         }
         try {
@@ -261,19 +258,7 @@ function Header() {
 
     return (
         <>
-            <div
-                style={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '10px 20px',
-                    boxSizing: 'border-box',
-                    border: '2px solid #071264',
-                    marginBottom: '20px',
-                    background: '#fff'
-                }}
-            >
+            <div className="header">
                 <img
                     src="/left-logo.png"
                     alt="Left Logo"
@@ -293,11 +278,11 @@ function Header() {
             </div>
             <div className="page-wrapper">
                 <div className="left-section">
-                    <img
+                    {/* <img
                         src="/srm-admission.jpeg"
                         alt="SRM Campus"
                         className="campus-image"
-                    />
+                    /> */}
                 </div>
                 <div className="enquiry-box">
                     <h2>Enquire Now</h2>
@@ -373,24 +358,24 @@ function Header() {
                             onChange={handleChange}
                         />
                         <div className="captcha-container">
-                        <canvas
-                            ref={canvasRef}
-                            width="180"
-                            height="60"
-                            className="captcha-canvas"
-                        />
+                            <canvas
+                                ref={canvasRef}
+                                width="180"
+                                height="60"
+                                className="captcha-canvas"
+                            />
 
-                        <button
-                            type="button"
-                            className="refresh-icon-btn"
-                            onClick={
-                                refreshCaptcha
-                            }
-                        >
-                            <FaSyncAlt />
-                        </button>
+                            <button
+                                type="button"
+                                className="refresh-icon-btn"
+                                onClick={
+                                    refreshCaptcha
+                                }
+                            >
+                                <FaSyncAlt />
+                            </button>
 
-                    </div>
+                        </div>
                         {/* <div className="captcha-box">
                             <div className="captcha-value">
                                 {captchaText.split("").map((char, index) => (
@@ -445,21 +430,62 @@ function Header() {
                     </form>
                 </div>
             </div>
-            <footer
-                style={{
-                    textAlign: 'center',
-                    marginTop: '20px',
-                    borderTop: '2px solid #e0aa3d',
-                    color: '#fff',
-                    fontWeight: 'bold',
-                    paddingBottom: '1px',
-                    fontSize: '14px',
-                    backgroundColor: '#071264',
-                }}
-            >
-                <p> SRM Institute of Science and Technology, Delhi-NCR Campus, Ghaziabad <br />
-                    <br />
-                    © {new Date().getFullYear()} SRMIST. All Rights Reserved. </p>
+            <footer className="footer">
+
+                <div className="footer-left">
+
+                    <h4>Contact Us</h4>
+
+                    <p>
+                        SRM Institute of Science and Technology
+                    </p>
+
+                    <p>
+                        Delhi-NCR Campus, Ghaziabad
+                    </p>
+
+                    <p>
+                        📞 1800 889 3496
+                    </p>
+
+                    {/* <p>
+                        ✉ @srmist.edu.in
+                    </p> */}
+
+                </div>
+
+                <div className="footer-center">
+
+                    {/* <img
+                        src="/srm-admission.jpeg"
+                        alt="SRM Logo"
+                        className="footer-logo"
+                    /> */}
+
+                    <p>
+                        © {new Date().getFullYear()}
+                        <br />
+                        SRM Institute of Science and Technology
+                        <br />
+                        All Rights Reserved
+                    </p>
+
+                </div>
+
+                <div className="footer-right">
+
+                    <img
+                        src="\enquiry-qr.jpeg"
+                        alt="QR Code"
+                        className="qr-image"
+                    />
+
+                    <p>
+                        Scan for Admissions
+                    </p>
+
+                </div>
+
             </footer>
         </>
     );
