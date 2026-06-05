@@ -52,12 +52,8 @@ function Header() {
         if (!formData.course) {
             newErrors.course = "Please select a course";
         }
-        if (
-            captchaInput.toUpperCase().trim() !==
-            captchaText
-        ) {
-            newErrors.captcha =
-                "Incorrect CAPTCHA";
+        if (captchaInput.toUpperCase().trim() !==captchaText) {
+            newErrors.captcha = "Incorrect CAPTCHA";
         }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -173,7 +169,7 @@ function Header() {
                             required
                         >
                             <option value="0">Course Interested in</option>
-                            <option value="31">B. Sc. In Hotel and Hospitality Administration</option>
+                            <option value="31">B.Sc. In Hotel and Hospitality Administration</option>
                             <option value="41">B.Sc.(Computer Science)</option>
                             <option value="39">B.Tech  Electronics &amp; Communication Engineering with Specialization  in Data Science</option>
                             <option value="5">B.Tech in Automobile Engineering</option>
@@ -208,11 +204,8 @@ function Header() {
                             onChange={handleChange}
                         />
                         <div className="captcha-box">
-
                             <div className="captcha-value">
-
                                 {captchaText.split("").map((char, index) => (
-
                                     <span
                                         key={index}
                                         className="captcha-text"
@@ -220,14 +213,10 @@ function Header() {
                                             display: "inline-block",
                                             transform: `rotate(${Math.random() * 40 - 20}deg)`
                                         }}
-                                    >
-                                        {char}
+                                    >{char}
                                     </span>
-
                                 ))}
-
                             </div>
-
                             <button
                                 type="button"
                                 className="refresh-icon-btn"
@@ -246,13 +235,9 @@ function Header() {
                         <input
                             type="text"
                             placeholder="Enter CAPTCHA *"
-                            value={
-                                captchaInput
-                            }
+                            value={ captchaInput }
                             onChange={(e) =>
-                                setCaptchaInput(
-                                    e.target.value
-                                )
+                                setCaptchaInput(e.target.value)
                             }
                         />
                         {errors.captcha && (
