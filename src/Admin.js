@@ -17,7 +17,7 @@ function Admin() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [students, setStudents] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1); 
   const [totalPages, setTotalPages] = useState(1);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
