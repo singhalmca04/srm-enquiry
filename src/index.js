@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import LoginModal from './LoginModal';
+import Admin from './Admin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +14,7 @@ root.render(
     <Router>
       <Routes>
         <Route path='/' element={<Header />} />
-        <Route path='/login' element={<LoginModal />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
     </Router>
   </GoogleOAuthProvider>

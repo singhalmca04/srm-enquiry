@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import './Enquiry.scss';
 // import ReCAPTCHA from "react-google-recaptcha";
 import { FaSyncAlt } from "react-icons/fa";
+import SrmHeader from "./SrmHeader";
+import SrmFooter from "./SrmFooter";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 function Header() {
@@ -258,18 +260,7 @@ function Header() {
 
     return (
         <>
-            <div className="header">
-                <img
-                    src="/left-logo.png"
-                    alt="Left Logo"
-                    className="left-logo"
-                />
-                <img
-                    src="/srm-logo.png"
-                    alt="Right Logo"
-                    className="right-logo"
-                />
-            </div>
+            <SrmHeader />
             <div className="page-wrapper">
                 <div className="left-section">
                     {/* <img
@@ -424,57 +415,7 @@ function Header() {
                     </form>
                 </div>
             </div>
-            <footer className="footer">
-
-                <div className="footer-left">
-
-                    <h4>Contact Us</h4>
-
-                    <p>
-                        📞 1800 889 3496
-                    </p>
-
-                    {/* <p>
-                        ✉ @srmist.edu.in
-                    </p> */}
-
-                </div>
-
-                <div className="footer-center">
-
-                    {/* <img
-                        src="/srm-admission.jpeg"
-                        alt="SRM Logo"
-                        className="footer-logo"
-                    /> */}
-
-                    <p style={{ fontSize: '14px' }}>
-                        © {new Date().getFullYear()}
-                        <br />
-                        SRM Institute of Science and Technology
-                        <br />
-                        Delhi-NCR Campus, Ghaziabad
-                        <br />
-                        All Rights Reserved
-                    </p>
-
-                </div>
-
-                <div className="footer-right">
-
-                    <img
-                        src="\enquiry-qr.jpeg"
-                        alt="QR Code"
-                        className="qr-image"
-                    />
-
-                    <p>
-                        Scan for Admissions
-                    </p>
-
-                </div>
-
-            </footer>
+            <SrmFooter />
         </>
     );
 }
