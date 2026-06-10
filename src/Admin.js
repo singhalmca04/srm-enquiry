@@ -29,6 +29,7 @@ function Admin() {
       setShowModal(false);
       fetchStudents(1, null, null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleLogin = () => {
     if (password === ADMIN_PASSWORD) {
