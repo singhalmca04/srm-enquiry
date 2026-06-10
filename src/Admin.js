@@ -7,8 +7,8 @@ import SrmFooter from "./SrmFooter";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { startOfMonth, subDays } from "date-fns";
-const apiUrl = "http://localhost:5000";
-// const apiUrl = process.env.REACT_APP_API_URL;
+// const apiUrl = "http://localhost:5000";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function Admin() {
   const [authenticated, setAuthenticated] = useState(false);
