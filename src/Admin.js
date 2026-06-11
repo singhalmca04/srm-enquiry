@@ -7,8 +7,8 @@ import SrmFooter from "./SrmFooter";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { startOfMonth, subDays } from "date-fns";
-// const apiUrl = "http://localhost:5000";
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "http://localhost:5000";
+// const apiUrl = process.env.REACT_APP_API_URL;
 
 function Admin() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -17,7 +17,7 @@ function Admin() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [students, setStudents] = useState([]);
-  const [page, setPage] = useState(1); 
+  const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
@@ -31,6 +31,16 @@ function Admin() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    if (authenticated) {
+      fetchStudents(
+        page,
+        fromDate,
+        toDate
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
   const handleLogin = () => {
     if (password === ADMIN_PASSWORD) {
       localStorage.setItem("adminAuth", "true");
@@ -395,9 +405,7 @@ function Admin() {
                   totalPages
                 }
                 onClick={() =>
-                  setPage(
-                    page + 1
-                  )
+                  setPage(page + 1)
                 }
               >
                 Next
