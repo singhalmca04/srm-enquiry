@@ -7,8 +7,8 @@ import SrmFooter from "./SrmFooter";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { startOfMonth, subDays } from "date-fns";
-const apiUrl = "http://localhost:5000";
-// const apiUrl = process.env.REACT_APP_API_URL;
+// const apiUrl = "http://localhost:5000";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function Admin() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -21,6 +21,7 @@ function Admin() {
   const [totalPages, setTotalPages] = useState(1);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const ADMIN_PASSWORD = "V9#rT2!mQ7@xL4$kP8&z";
   useEffect(() => {
@@ -33,11 +34,7 @@ function Admin() {
   }, []);
   useEffect(() => {
     if (authenticated) {
-      fetchStudents(
-        page,
-        fromDate,
-        toDate
-      );
+      fetchStudents(page, fromDate, toDate);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
@@ -80,28 +77,32 @@ function Admin() {
 
     fetchStudents(1, null, null);
   };
-  const fetchStudents = async (pageNo = page,
-    startDate = fromDate,
-    endDate = toDate) => {
-    const token = localStorage.getItem("token");
-    const res =
-      await axios.get(
-        apiUrl +
-        "/students",
-        {
-          params: {
-            page: pageNo,
-            fromDate: startDate ? startDate.toISOString().split("T")[0] : "",
-            toDate: endDate ? endDate.toISOString().split("T")[0] : ""
-          },
-          headers: {
-            Authorization: `Bearer ${token}`
+  const fetchStudents = async (pageNo = page, startDate = fromDate, endDate = toDate) => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem("token");
+      const res =
+        await axios.get(
+          apiUrl +
+          "/students",
+          {
+            params: {
+              page: pageNo,
+              fromDate: startDate ? startDate.toISOString().split("T")[0] : "",
+              toDate: endDate ? endDate.toISOString().split("T")[0] : ""
+            },
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
           }
-        }
-      );
-
-    setStudents(res.data.students);
-    setTotalPages(res.data.totalPages);
+        );
+      setStudents(res.data.students);
+      setTotalPages(res.data.totalPages);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
   };
   const downloadExcel = async () => {
     const token = localStorage.getItem("token");
@@ -305,80 +306,87 @@ function Admin() {
               </div>
 
             </div>
-            <table>
+            {
+              loading ? (
 
-              <thead>
+                <div className="loader-container">
+                  <div className="loader"></div>
+                  <p>Loading students...</p>
+                </div>
 
-                <tr>
+              ) : (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>
+                        S.No.
+                      </th>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Phone Number
+                      </th>
+                      <th>
+                        Email
+                      </th>
+                      <th>
+                        Course
+                      </th>
+                      <th>Message</th>
 
-                  <th>
-                    S.No.
-                  </th>
-
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    Phone Number
-                  </th>
-                  <th>
-                    Email
-                  </th>
-                  <th>
-                    Course
-                  </th>
-                  <th>Message</th>
-
-                  <th>
-                    Date
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody>
-
-                {
-                  students.map((student, index) => (
-                    <tr
-                      key={
-                        student._id
-                      }
-                    >
-
-                      <td>
-                        {
-                          index + 1 + (page - 1) * 10
-                        }
-                      </td>
-
-                      <td>
-                        {
-                          student.name
-                        }
-                      </td>
-                      <td>{student.mobile}</td>
-                      <td>{student.email}</td>
-                      <td>{student.courseInfo.courseName}</td>
-                      <td>{student.message}</td>
-                      <td>
-                        {
-                          new Date(
-                            student.createdAt
-                          ).toLocaleDateString()
-                        }
-                      </td>
+                      <th>
+                        Date
+                      </th>
 
                     </tr>
 
-                  )
-                  )
-                }
+                  </thead>
 
-              </tbody>
+                  <tbody>
 
-            </table>
+                    {
+                      students.map((student, index) => (
+                        <tr
+                          key={
+                            student._id
+                          }
+                        >
+
+                          <td>
+                            {
+                              index + 1 + (page - 1) * 10
+                            }
+                          </td>
+
+                          <td>
+                            {
+                              student.name
+                            }
+                          </td>
+                          <td>{student.mobile}</td>
+                          <td>{student.email}</td>
+                          <td>{student.courseInfo.courseName}</td>
+                          <td>{student.message}</td>
+                          <td>
+                            {
+                              new Date(
+                                student.createdAt
+                              ).toLocaleDateString()
+                            }
+                          </td>
+
+                        </tr>
+
+                      )
+                      )
+                    }
+
+                  </tbody>
+
+                </table>
+              )
+            }
             <br /><br />
             <div className="pagination">
               <button
