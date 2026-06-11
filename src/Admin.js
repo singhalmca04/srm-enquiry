@@ -149,14 +149,10 @@ function Admin() {
                 placeholder="Enter Password"
                 value={password}
                 onChange={(e) =>
-                  setPassword(
-                    e.target.value
-                  )
+                  setPassword(e.target.value)
                 }
                 onKeyDown={(e) => {
-                  if (
-                    e.key === "Enter"
-                  ) {
+                  if (e.key === "Enter") {
                     handleLogin();
                   }
                 }}
@@ -170,9 +166,7 @@ function Admin() {
                 }
               >
                 {
-                  showPassword
-                    ? <FaEyeSlash />
-                    : <FaEye />
+                  showPassword ? <FaEyeSlash /> : <FaEye />
                 }
               </button>
 
@@ -197,67 +191,24 @@ function Admin() {
               </div>
 
               <div className="admin-actions">
-
                 <div className="admin-profile">
-                  <span className="admin-avatar">
-                    A
-                  </span>
-
-                  <span>
-                    Admin
-                  </span>
+                  <span className="admin-avatar"> A </span>
+                  <span> Admin </span>
                 </div>
-
-                <button
-                  className="logout-btn"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
-
+                <button className="logout-btn" onClick={handleLogout}> Logout </button>
               </div>
-
             </div>
             <div className="filter-card">
-
               <div className="quick-filters">
-
-                <button
-                  className="quick-btn"
-                  onClick={setToday}
-                >
-                  Today
-                </button>
-
-                <button
-                  className="quick-btn"
-                  onClick={setLast7Days}
-                >
-                  Last 7 Days
-                </button>
-
-                <button
-                  className="quick-btn"
-                  onClick={setThisMonth}
-                >
-                  This Month
-                </button>
-
-                <button
-                  className="quick-btn reset"
-                  onClick={clearFilters}
-                >
-                  Reset
-                </button>
-
+                <button className="quick-btn" onClick={setToday}>Today</button>
+                <button className="quick-btn" onClick={setLast7Days}>Last 7 Days</button>
+                <button className="quick-btn" onClick={setThisMonth}>This Month</button>
+                <button className="quick-btn reset" onClick={clearFilters}>Reset</button>
               </div>
 
               <div className="date-filter-row">
-
                 <div className="filter-group">
-
                   <label>From Date</label>
-
                   <DatePicker
                     selected={fromDate}
                     onChange={(date) =>
@@ -267,13 +218,10 @@ function Admin() {
                     placeholderText="Select Start Date"
                     className="date-picker"
                   />
-
                 </div>
 
                 <div className="filter-group">
-
                   <label>To Date</label>
-
                   <DatePicker
                     selected={toDate}
                     onChange={(date) =>
@@ -282,8 +230,7 @@ function Admin() {
                     dateFormat="dd/MM/yyyy"
                     placeholderText="Select End Date"
                     className="date-picker"
-                  />
-
+                 />
                 </div>
 
                 <button
@@ -302,97 +249,49 @@ function Admin() {
                 >
                   Download Excel
                 </button>
-
               </div>
-
             </div>
             {
               loading ? (
-
                 <div className="loader-container">
                   <div className="loader"></div>
                   <p>Loading students...</p>
                 </div>
-
               ) : (
                 <table>
                   <thead>
                     <tr>
-                      <th>
-                        S.No.
-                      </th>
-                      <th>
-                        Name
-                      </th>
-                      <th>
-                        Phone Number
-                      </th>
-                      <th>
-                        Email
-                      </th>
-                      <th>
-                        Course
-                      </th>
+                      <th>S.No.</th>
+                      <th>Name </th>
+                      <th> Phone Number </th>
+                      <th> Email </th>
+                      <th> Course </th>
                       <th>Message</th>
-
-                      <th>
-                        Date
-                      </th>
-
+                      <th> Date </th>
                     </tr>
-
                   </thead>
-
                   <tbody>
-
                     {
                       students.map((student, index) => (
-                        <tr
-                          key={
-                            student._id
-                          }
-                        >
-
-                          <td>
-                            {
-                              index + 1 + (page - 1) * 10
-                            }
-                          </td>
-
-                          <td>
-                            {
-                              student.name
-                            }
-                          </td>
+                        <tr key={ student._id }>
+                          <td> { index + 1 + (page - 1) * 10 } </td>
+                          <td> { student.name } </td>
                           <td>{student.mobile}</td>
                           <td>{student.email}</td>
                           <td>{student.courseInfo.courseName}</td>
                           <td>{student.message}</td>
-                          <td>
-                            {
-                              new Date(
-                                student.createdAt
-                              ).toLocaleDateString()
-                            }
-                          </td>
-
+                          <td> { new Date(student.createdAt).toLocaleDateString()} </td>
                         </tr>
-
                       )
                       )
                     }
-
                   </tbody>
-
                 </table>
               )
             }
             <br /><br />
             <div className="pagination">
-              <button
-                disabled={
-                  page === 1
-                }
+              <button disabled={ page === 1 }
                 onClick={() =>
                   setPage(
                     page - 1
