@@ -9,6 +9,11 @@ function SrmFooter() {
                     <p>
                         📞 1800 889 3496
                     </p>
+                    <p>
+                        <a href="https://www.srmup.in" target="_blank" rel="noopener noreferrer">
+                            🌐 www.srmup.in
+                        </a>
+                    </p>
                 </div>
 
                 <div className="footer-center">
