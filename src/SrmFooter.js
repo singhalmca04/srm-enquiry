@@ -9,9 +9,9 @@ function SrmFooter() {
                     <p>
                         📞 1800 889 3496
                     </p>
-                    <p>
-                        <a href="https://www.srmup.in" target="_blank" rel="noopener noreferrer">
-                            🌐 www.srmup.in
+                    <p> 🌐 &nbsp;
+                        <a href="https://www.srmup.in" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'none' }}>
+                            www.srmup.in
                         </a>
                     </p>
                 </div>
@@ -25,7 +25,8 @@ function SrmFooter() {
                         Delhi-NCR Campus, Ghaziabad
                         <br />
                         All Rights Reserved
-                    </p>
+                    </p><br/>
+                    <p style={{ fontSize: '10px', color: '#f0f0f0' }}>Designed and developed by Dr. Vinay Singhal</p>
                 </div>
 
                 <div className="footer-right">
