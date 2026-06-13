@@ -1,4 +1,3 @@
-// import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './Header';
@@ -7,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Admin from './Admin';
+import { Analytics } from "@vercel/analytics/react";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +17,7 @@ root.render(
         <Route path='/admin' element={<Admin />} />
       </Routes>
     </Router>
+    <Analytics />
   </GoogleOAuthProvider>
 )
 
