@@ -5,6 +5,7 @@ import { FaSyncAlt } from "react-icons/fa";
 import SrmHeader from "./SrmHeader";
 import SrmFooter from "./SrmFooter";
 const apiUrl = process.env.REACT_APP_API_URL;
+// const apiUrl = "http://localhost:5000";
 
 function Header() {
     const canvasRef = useRef(null);
@@ -13,13 +14,14 @@ function Header() {
         email: "",
         mobile: "",
         course: "",
+        refcode: "",
         message: ""
     });
     const [errors, setErrors] = useState({});
     const [captchaInput, setCaptchaInput] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [loading, setLoading] = useState(false);
-
+    const referralCode = ["SRMED10", "SRMED20", "SRMED30", "SRMED40", "SRMED50"];
     const generateCaptcha = () => {
         const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
         let text = "";
@@ -178,20 +180,11 @@ function Header() {
     };
 
     useEffect(() => {
-
-        const text =
-            generateCaptcha();
-
-        setCaptchaText(
-            text
-        );
-
+        const text = generateCaptcha();
+        setCaptchaText(text);
         setTimeout(() => {
-            drawCaptcha(
-                text
-            );
+            drawCaptcha(text);
         }, 100);
-
     }, []);
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -220,6 +213,9 @@ function Header() {
         if (captchaInput.toUpperCase().trim() !== captchaText) {
             newErrors.captcha = "Incorrect CAPTCHA";
         }
+        if (formData.refcode && !referralCode.includes(formData.refcode.trim())) {
+            newErrors.refcode = "Invalid referral code";
+        }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -243,7 +239,7 @@ function Header() {
             const result = await response.json();
             if (result.success) {
                 setSuccessMessage("Enquiry submitted successfully.");
-                setFormData({ name: "", email: "", mobile: "", course: "", message: "" });
+                setFormData({ name: "", email: "", mobile: "", course: "", message: "", refcode: "" });
                 setCaptchaInput("");
                 refreshCaptcha();
                 setErrors({});
@@ -342,6 +338,16 @@ function Header() {
                             value={formData.message}
                             onChange={handleChange}
                         />
+                        <input
+                            type="text"
+                            name="refcode"
+                            placeholder="Enter Referral code (if any)"
+                            value={formData.refcode}
+                            onChange={handleChange}
+                        />
+                        {errors.refcode && (
+                            <div className="error">{errors.refcode}</div>
+                        )}
                         <div className="captcha-container">
                             <canvas
                                 ref={canvasRef}

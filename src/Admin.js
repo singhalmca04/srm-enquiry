@@ -7,8 +7,8 @@ import SrmFooter from "./SrmFooter";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { startOfMonth, subDays } from "date-fns";
-// const apiUrl = "http://localhost:5000";
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "http://localhost:5000";
+// const apiUrl = process.env.REACT_APP_API_URL;
 
 function Admin() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -266,6 +266,7 @@ function Admin() {
                       <th> Phone Number </th>
                       <th> Email </th>
                       <th> Course </th>
+                      <th> Referral Code </th>
                       <th>Message</th>
                       <th> Date </th>
                     </tr>
@@ -279,6 +280,7 @@ function Admin() {
                           <td>{student.mobile}</td>
                           <td>{student.email}</td>
                           <td>{student.courseInfo.courseName}</td>
+                          <td>{student.refcode}</td>
                           <td>{student.message}</td>
                           <td> { new Date(student.createdAt).toLocaleDateString()} </td>
                         </tr>
